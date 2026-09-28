@@ -1,0 +1,22 @@
+{% extends "news/base.html" %}
+
+{% block title %}Pending Articles{% endblock %}
+
+{% block content %}
+<h1>Pending Articles</h1>
+
+<ul>
+    {% for article in articles %}
+        <li>
+            <a href="{% url 'article-detail' article.pk %}">{{ article.title }}</a>
+            — {{ article.author.username }}
+            <form action="{% url 'approve-article' article.pk %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn approve">Approve</button>
+            </form>
+        </li>
+    {% empty %}
+        <li>No pending articles.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

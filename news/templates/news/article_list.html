@@ -1,0 +1,21 @@
+{% extends "news/base.html" %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+<h1>Approved Articles</h1>
+
+<ul>
+    {% for article in articles %}
+        <li>
+            <a href="{% url 'article-detail' article.pk %}">{{ article.title }}</a>
+            — by {{ article.author.username }}
+            {% if article.publisher %}
+                for <em>{{ article.publisher.name }}</em>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No articles yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
