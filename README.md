@@ -11,24 +11,23 @@ Built as the **Capstone Project** for the HyperionDev Software Engineering Bootc
 
 ---
 
-##  Table of Contents
+## Table of Contents
 
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Architecture](#-architecture)
-- [Getting Started](#-getting-started)
-- [Environment Variables](#-environment-variables)
-- [Running the App](#-running-the-app)
-- [API Reference](#-api-reference)
-- [Testing](#-testing)
-- [Project Structure](#-project-structure)
-- [Screenshots](#-screenshots)
-- [Author](#-author)
-- [License](#-license)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Running the App](#running-the-app)
+- [API Reference](#api-reference)
+- [Testing](#testing)
+- [Project Structure](#project-structure)
+- [Author](#author)
+- [License](#license)
 
 ---
 
-##  Features
+## Features
 
 ### Roles & Permissions
 - **Reader** — can view articles and newsletters, subscribe to publishers/journalists
@@ -56,18 +55,18 @@ Built as the **Capstone Project** for the HyperionDev Software Engineering Bootc
 ### Quality
 - 60+ automated unit tests covering models, API, and signals
 - PEP 8 compliant, modular, defensive code
-- MariaDB-ready (SQLite for local development)
+- MariaDB-ready
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
 | Backend | Django 5.x |
 | API | Django REST Framework |
 | Auth | SimpleJWT (Bearer tokens) |
-| Database | MariaDB / MySQL (SQLite in dev) |
+| Database | MariaDB / MySQL |
 | Email | Django `send_mail` (console backend in dev) |
 | HTTP Client | `requests` (for X API) |
 | Config | `python-decouple` + `.env` |
@@ -75,4 +74,32 @@ Built as the **Capstone Project** for the HyperionDev Software Engineering Bootc
 
 ---
 
-##  Architecture
+## Architecture
+
+The project is split into a single Django app (`news`) plus a project package (`news_project`):
+
+- `news/models.py` — `CustomUser`, `Publisher`, `Article`, `Newsletter`
+- `news/views.py` — HTML-rendered views for readers, journalists, and editors
+- `news/api_views.py` — DRF views for the API layer
+- `news/serializers.py` — DRF serializers
+- `news/forms.py` — registration and article forms
+- `news/signals.py` — post-save hooks for email + X posting
+- `news/permissions.py` — role-based DRF permissions
+- `news/templates/` — HTML templates
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.12+
+- Git
+- Docker Desktop (for the Docker workflow)
+- MariaDB or MySQL (only if running locally without Docker)
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ntsaneu/news-application-capstone.git
+cd news-application-capstone
