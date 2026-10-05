@@ -1,3 +1,9 @@
+"""Database models for the news application.
+
+Defines custom user roles, publishers, articles, and newsletters
+that form the core data layer of the app.
+"""
+
 from django.contrib.auth.models import AbstractUser, Group
 from django.db import models
 from django.core.exceptions import ValidationError
