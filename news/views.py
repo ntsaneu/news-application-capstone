@@ -1,7 +1,12 @@
-"""
-Template-based views for the news application.
+"""Template-based views for the news application.
 
-Handles HTML rendering for readers, journalists, and editors.
+Provides HTML-rendered pages for:
+- public browsing (home, article list, article detail)
+- authentication (register, login, logout)
+- journalist workflows (create, edit own articles)
+- editorial workflows (review pending, approve)
+
+Permission checks are enforced in each view using ``request.user.role``.
 """
 
 from django.contrib.auth import login
