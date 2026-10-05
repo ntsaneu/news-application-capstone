@@ -2,9 +2,7 @@
 
 Maps URL paths to HTML template views for home, authentication,
 article browsing, creation, editing, and editorial approval.
-""
-
-"""URL patterns for the news application (HTML template views)."""
+"""
 
 from django.contrib.auth import views as auth_views
 from django.urls import path
