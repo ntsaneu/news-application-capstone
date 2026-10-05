@@ -21,4 +21,6 @@ media/
 
 # IDE
 .vscode/
-.idea/
+.idea/.env
+.env.*
+!.env.example
